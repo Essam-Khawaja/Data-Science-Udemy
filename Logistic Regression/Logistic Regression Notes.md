@@ -6,18 +6,18 @@ An example would be the following:
  - Logistic Regression can tell us whether the customer will buy at all
 
 ## The Logistic Model
- - The logistic regression predicts the probability of an event occuring
+ - The logistic regression predicts the probability of an event occurring
  - Given the input, how probable is the outcome?
- - The equation of the logit form (a special form of the logistic equation) is:
-   $$
-    \log\left( \frac{p(\mathbf{x})}{1 - p(\mathbf{x})} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k
-    $$, 
+ - The equation of the Logit form (a special form of the logistic equation) is:
+
+$$
+\log\left( \frac{p(\mathbf{x})}{1 - p(\mathbf{x})} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k
+$$
+
    Where p(x) is the probability of an event happening.
 
    We can also simplify this to:
-   $$
-   \log(odds) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k
-   $$
+   $$\log(odds) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k$$
 
 
 ## Understanding the Summary Table
@@ -45,8 +45,6 @@ We can't actually have an R-squared for logistic regressions, so we kind of just
 ![alt text](Logit_Summary_Table.png)
 
 According to our table here, we can see that our model ends being:
-$$
-\log\left( \frac{\pi}{1 - \pi} \right) = -69.9128 + 0.0420 \cdot \text{SAT}
-$$
+$$\log\left( \frac{\pi}{1 - \pi} \right) = -69.9128 + 0.0420 \cdot \text{SAT}$$
 
-The identity of $$\frac{\pi}{1 - \pi}$$ is called the odds, where π is the probability of an event occuring and 1 - π is the probability of an event not occuring.
+The identity of $$\frac{\pi}{1 - \pi}$$ is called the odds, where π is the probability of an event occuring and 1 - π is the probability of an event not occurring.
