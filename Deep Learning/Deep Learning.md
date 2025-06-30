@@ -53,3 +53,4 @@ The most fundamental algorithm is the gradient descent.
 $$x_{i+1} = x_i$$
 
 Generally, we want the learning rate to be high enough where we can reach the closest minimum in a rational amount of time, but low enough such that we don't vary around the minimum arbitrarily.
+
