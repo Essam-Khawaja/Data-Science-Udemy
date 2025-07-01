@@ -1,0 +1,2 @@
+# Data Science Notes and Exercises
+This is the compilation of all my notes and practice exercises from a course and other learning platforms like Youtube. This repo is mainly for my future reference, as well as for other people to refer to for a quick recap on certain topics.
