@@ -100,3 +100,32 @@ At the end of each epoch (after forward propogating to the output layer), we cal
 
 ![alt text](image.png)
 
+---
+
+## Overfitting
+As we know, overfitting means that the training is too good that it misses the actual underlying logic behind the data. For machine learning, we will often need to find the right balance between an underfitted and overfitted model (Bias-Variance Tradeoff). 
+
+To prevent overfitting, we need to be able to spot it first. We need to first split the dataset into training, validation, and test dataset. We train the model with the training data. We then apply the model to the validation dataset. We calculate the loss function on the validation set and the training set, then compare them. They have to be the same. If they are not, then we need to train the model some more. 
+
+So while we re-train the model, we will notice its loss function lower. At the same time, validation loss should also decrease. The moment the loss function for validation starts increasing, we will know the model is being overfitted. 
+
+After stopping the training, we will use the test dataset to measure the accuracy of the model.
+
+The split is commonly 80/10/10 and 70/20/10 for training, validation, and test respectively.
+
+### N-Fold Cross Validation
+If the dataset is small, we cannot split it into three parts. So instead, we only split it into training and test datasets. 
+
+Now, imagine our training set is made of 10 chunks arranged in a row, with each chunk containing an equal part of the data. Let the first chunk be the validation set. Then, we run the model on the remaining 9 chunks, which is our training set. Now that the epoch has ended, if we need to train the model some more, we simply assign chunk #2 to be the validation set, and then the remaining 9 to be the training. This ensures that the validation set is never included during the training, allowing its loss function to always give insights. The number of chunks we used is in this case 'N', so for the example above this would be a 10-Fold Cross Validation.
+
+Technically, we still have trained on the validation set, meaning that we are going to get a model that is slightly overfitted. But with scarce data and a need for model, we have to use this. 
+
+---
+## Initialization
+Initialization is the process in which we set the initial values of weights before training/running the model. An inappropriate initialization would lead to a bad model. 
+
+One approach is to assign it randomly between a small range, with the randomness being uniform in probability. 
+
+Another approach is to use a normal distribution for the randomness. 
+
+Refer to Lecture 362 for the mathematical formulas of Glorot Initialization. It is the same as the two methods above, but more standardized and conventional. 
