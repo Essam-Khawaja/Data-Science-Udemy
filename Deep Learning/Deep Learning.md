@@ -129,3 +129,55 @@ One approach is to assign it randomly between a small range, with the randomness
 Another approach is to use a normal distribution for the randomness. 
 
 Refer to Lecture 362 for the mathematical formulas of Glorot Initialization. It is the same as the two methods above, but more standardized and conventional. 
+
+---
+## Stochastic Gradient Descent and Learning Rate Schedules
+Batching: The process of splitting the dataset into n-batches
+
+By batching the dataset, the gradient descent is run on each batch instead of each epoch, significantly improving the speed of the algorithm. Now, for stochastic gradient descent, the batch size is 1, meaning that it is run after each input. 
+
+### The problem with the gradient descent
+Often when running this optimization algorithm, it will find the first local minima of the loss function rather than the global minima. This is bad, since the best machine learning algorithm exists at the global minima. 
+
+In order to resolve this, we need to extend its **momentum**. 
+The formula for GD is:
+
+$$ w_{i+1} = w_i - \eta\frac{\partial L}{\partial w}$$
+
+Then, our new formula with momentum would be:
+
+$$w_{i+1} = w_i(t) - \eta\frac{\partial L}{\partial w}(t) - \alpha\eta\frac{\partial L}{\partial w}(t-1)$$
+
+where $$\alpha$$ is a constant which we use to make it less significant to the equation, usually set to 0.9 as a convention. 
+
+By using this formula, now the equation accounts for the previous gd as well, and resembles the forward velocity we need. 
+
+### Learning Rate Schedules
+How do we choose eta? It must be small enough so we gently descend, instead of oscillating or diverging. It must also be big enough so we reach it in a rational amount of time. 
+
+For this, we apply Learning Rate Schedules:
+1. We start from a high initial learning rate
+2. At some point we lower the ratio to avoid oscillation
+3. Around the end we pick a very small rate to get a precise answer
+
+We usually apply this exponentially, so that the descent is exponential:
+
+$$ \eta = \eta_0e^{-n/c}$$
+
+where c is a constant that is of the same order of magnitude as the number of observations.
+
+There are some advanced learning rate schedules, which I can refer to in Lectures 368 and 369. These lectures mention AdaGrad, RMSProp, and Adam.
+
+---
+## Preprocessing
+This is the manipulation of the dataset before running it through the model. 
+
+### Standardization
+This is the process of transforming data into a standard scale. Feature scaling and normalization are some key methods. 
+
+One of these methods is PCA (Principal Component Analysis), which is a dimension reduction technique used to combine several variables into a bigger (latent) variable. 
+
+### Categorical Data
+Binary Encoding: Giving each category a binary number representation. Then, split each individual binary number into different columns. 
+
+One-Hot Encoding: Make as many columns as categories. Each column represents a data point. Then, if we find the category in a row, we just put one in its column. 
